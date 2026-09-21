@@ -1,6 +1,9 @@
 import io
 import json
 import unittest
+import tempfile
+import contextlib
+from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
 import run_full_request as b
@@ -51,6 +54,43 @@ class FullRequestTests(unittest.TestCase):
         self.assertEqual(len(selected), 20)
         self.assertEqual({r['proxy_request_id'] for r in selected}, expected)
         self.assertFalse(b.is_initial_request({'request_body': self.body}))
+
+    def test_run_summary_and_legacy_report_without_network(self):
+        responses = [
+            {'prediction': 'query_param', 'error': None, 'http_status': 200, 'latency_ms': 100},
+            {'prediction': 'query_alarm', 'error': None, 'http_status': 200, 'latency_ms': 300},
+            {'prediction': None, 'error': 'HTTPError', 'http_status': 503, 'latency_ms': 500},
+        ]
+        with tempfile.TemporaryDirectory() as tmp, contextlib.redirect_stdout(io.StringIO()):
+            out = Path(tmp)
+            with patch.object(b, 'call_service', side_effect=responses) as call:
+                self.assertEqual(b.main(['run', '--limit', '3', '--out', tmp]), 1)
+                self.assertEqual(call.call_count, 3)
+            summary = json.loads((out/'summary.json').read_text())
+            self.assertEqual(summary['successful'], 2)
+            self.assertEqual(summary['failed'], 1)
+            self.assertEqual(summary['agreement_all'], 1/3)
+            self.assertEqual(summary['agreement_success_only'], 1/2)
+            self.assertEqual(summary['success_latency']['mean_ms'], 200)
+            self.assertEqual(summary['success_latency']['p95_ms'], 300)
+            self.assertEqual(len(b.read_jsonl(out/'disagreements.jsonl')), 2)
+            # Simulate the old script's metadata and an interrupted two-result run.
+            sources = b.read_jsonl(out/'sources.jsonl')
+            for meta in sources:
+                meta.pop('baseline_skill')
+            (out/'sources.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in sources))
+            saved = b.read_jsonl(out/'results.jsonl')
+            (out/'results.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in saved[:2]))
+            with patch.object(b, 'call_service', side_effect=AssertionError('must be offline')):
+                self.assertEqual(b.main(['report', '--out', tmp]), 0)
+            summary = json.loads((out/'summary.json').read_text())
+            self.assertEqual(summary['missing'], 1)
+            self.assertEqual(summary['failed'], 0)
+            self.assertEqual(summary['agreement_all'], 1/3)
+            saved[0]['payload_sha256'] = 'wrong'
+            (out/'results.jsonl').write_text(json.dumps(saved[0])+'\n')
+            with self.assertRaisesRegex(ValueError, 'does not match'):
+                b.make_report(out, b.DEFAULT_INPUT)
 
     def test_http_error_details(self):
         error = HTTPError('http://localhost', 503, 'unavailable', {'x-typesafe-request-id': 'trace'},
