@@ -42,6 +42,16 @@ class FullRequestTests(unittest.TestCase):
         self.assertEqual(json.loads(req.data)['model'], 'kev-latest')
         self.assertEqual(result['prediction'], 'query_param')
 
+    def test_initial_selection_matches_original_twenty(self):
+        with b.DEFAULT_INPUT.open() as src:
+            records = [json.loads(line) for line in src if line.strip()]
+        selected = [r for r in records if b.is_initial_request(r)]
+        with (b.ROOT/'questions.jsonl').open() as src:
+            expected = {json.loads(line)['id'] for line in src if line.strip()}
+        self.assertEqual(len(selected), 20)
+        self.assertEqual({r['proxy_request_id'] for r in selected}, expected)
+        self.assertFalse(b.is_initial_request({'request_body': self.body}))
+
     def test_http_error_details(self):
         error = HTTPError('http://localhost', 503, 'unavailable', {'x-typesafe-request-id': 'trace'},
                           io.BytesIO(b'{"error":"backend unavailable secret-key"}'))

@@ -49,6 +49,17 @@ def build_payload(record, model):
                                     'criteria': criteria}}}
 
 
+def is_initial_request(record):
+    """Exclude recorded follow-ups that already contain assistant/tool turns."""
+    body = record.get('request_body')
+    if isinstance(body, str):
+        body = json.loads(body)
+    if not isinstance(body, dict) or not isinstance(body.get('messages'), list) or not body['messages']:
+        raise ValueError('Expected a real request_body with nonempty messages')
+    return not any(message.get('role') in ('assistant', 'tool', 'function')
+                   for message in body['messages'])
+
+
 def redact(text, key):
     return text.replace(key, '[REDACTED]') if key else text
 
@@ -91,7 +102,7 @@ def main(argv=None):
     parser.add_argument('--api-key-env', default='LOCAL_MODEL_API_KEY')
     parser.add_argument('--timeout', type=float, default=60)
     parser.add_argument('--start-line', type=int, default=1, help='1-based source line')
-    parser.add_argument('--limit', type=int, default=0, help='0 selects all remaining records')
+    parser.add_argument('--limit', type=int, default=0, help='0 selects all remaining initial skill-selection requests')
     args = parser.parse_args(argv)
     if args.start_line < 1 or args.limit < 0 or args.timeout <= 0:
         parser.error('start-line/timeout must be positive; limit must be nonnegative')
@@ -103,6 +114,8 @@ def main(argv=None):
             if line_number < args.start_line or not line.strip():
                 continue
             record = json.loads(line)
+            if not is_initial_request(record):
+                continue
             payload = build_payload(record, args.model)
             encoded = json.dumps(payload, ensure_ascii=False)
             items.append(({'source_line': line_number, 'id': record.get('proxy_request_id'),
@@ -122,6 +135,7 @@ def main(argv=None):
     write('sources.jsonl', [metadata for metadata, _ in items])
     (args.out/'manifest.json').write_text(json.dumps({
         'input': str(args.input.resolve()), 'base_url': args.base_url, 'model': args.model,
+        'selection': 'initial requests only (no assistant/tool/function history)',
         'count': len(items), 'workers': 1, 'retries': 0,
         'state': 'original request_body messages and tools only',
     }, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
