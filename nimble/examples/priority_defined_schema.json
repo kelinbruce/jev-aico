@@ -1,0 +1,13 @@
+{
+  "priority": {
+    "type": "enum",
+    "choices": ["P0_CRITICAL", "P1_HIGH", "P2_NORMAL", "P3_LOW"],
+    "description": "Urgency tier based on customer business impact. Apply the choice descriptions as the priority policy.",
+    "choice_descriptions": {
+      "P0_CRITICAL": "Active widespread production outage, critical business operations stopped, or active data loss.",
+      "P1_HIGH": "A customer's critical business operation is blocked with no usable workaround, but the impact is not widespread.",
+      "P2_NORMAL": "A current issue causes moderate business impact or degraded functionality, but work can continue with a workaround.",
+      "P3_LOW": "No current business impact; cosmetic issues, minor inconveniences, or optional future enhancements."
+    }
+  }
+}

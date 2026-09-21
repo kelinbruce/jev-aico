@@ -1,0 +1,73 @@
+{
+  "url": "https://bespokelabs--nimble-sglang-nimble.us-west.modal.direct",
+  "authentication_headers_sent": false,
+  "root_status": 307,
+  "root_location": "/docs",
+  "docs_status": 200,
+  "openapi_status": 200,
+  "inference_status": 200,
+  "request": {
+    "model": "nimble-latest",
+    "state": "I was charged twice. Please refund the duplicate.",
+    "questions": {
+      "refund": {
+        "type": "noul",
+        "instructions": "Does the user request a refund?"
+      },
+      "department": {
+        "type": "choice",
+        "instructions": "Which department should handle this?",
+        "criteria": {
+          "billing": "Payments and refunds",
+          "technical": "Software bugs"
+        }
+      },
+      "urgency": {
+        "type": "score",
+        "instructions": "How urgent is the request?",
+        "criteria": [
+          "Routine",
+          "Urgent",
+          "Emergency"
+        ]
+      }
+    }
+  },
+  "response": {
+    "model": "nimble-latest",
+    "answers": {
+      "refund": {
+        "type": "noul",
+        "noul": 0.998830489806203
+      },
+      "department": {
+        "type": "choice",
+        "choice": "billing",
+        "probabilities": {
+          "billing": 0.9579122672782973,
+          "technical": 0.04208773272170267
+        },
+        "confidence": 0.7482161813838393
+      },
+      "urgency": {
+        "type": "score",
+        "score": 0.7907079771861036,
+        "legend": {
+          "0": "Routine",
+          "1": "Urgent",
+          "2": "Emergency"
+        },
+        "probabilities": {
+          "0": 0.2202580241192943,
+          "1": 0.7687759745753078,
+          "2": 0.010966001305397929
+        },
+        "confidence": 0.46761592472275226
+      }
+    },
+    "usage": {
+      "input_tokens": 1209,
+      "output_tokens": 4
+    }
+  }
+}

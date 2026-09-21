@@ -1,0 +1,82 @@
+{
+  "note": "agreement compares recorded predictions, not ground truth. Accuracy requires gold labels. Historical LLM latency includes argument/text generation; Jev only selects a skill.",
+  "overall": {
+    "n": 20,
+    "successful": 20,
+    "failed_or_missing": 0,
+    "baseline_distribution": {
+      "query_param": 20
+    },
+    "agreement_denominator": 20,
+    "agreement_all": 1.0,
+    "agreement_success_only": 1.0,
+    "gold_n": 0,
+    "jev_accuracy": null,
+    "baseline_accuracy": null,
+    "baseline_to_jev_confusion": {
+      "query_param": {
+        "query_param": 20
+      }
+    },
+    "jev_success_latency": {
+      "n": 20,
+      "mean_ms": 1400.4037812500003,
+      "p50_ms": 1045.7146670000004,
+      "p95_ms": 2427.39775
+    },
+    "baseline_paired_latency": {
+      "n": 20,
+      "mean_ms": 12933.28945,
+      "p50_ms": 12382.2745,
+      "p95_ms": 21605.757
+    }
+  },
+  "by_phase": {
+    "initial": {
+      "n": 20,
+      "successful": 20,
+      "failed_or_missing": 0,
+      "baseline_distribution": {
+        "query_param": 20
+      },
+      "agreement_denominator": 20,
+      "agreement_all": 1.0,
+      "agreement_success_only": 1.0,
+      "gold_n": 0,
+      "jev_accuracy": null,
+      "baseline_accuracy": null,
+      "baseline_to_jev_confusion": {
+        "query_param": {
+          "query_param": 20
+        }
+      },
+      "jev_success_latency": {
+        "n": 20,
+        "mean_ms": 1400.4037812500003,
+        "p50_ms": 1045.7146670000004,
+        "p95_ms": 2427.39775
+      },
+      "baseline_paired_latency": {
+        "n": 20,
+        "mean_ms": 12933.28945,
+        "p50_ms": 12382.2745,
+        "p95_ms": 21605.757
+      }
+    },
+    "followup": {
+      "n": 0,
+      "successful": 0,
+      "failed_or_missing": 0,
+      "baseline_distribution": {},
+      "agreement_denominator": 0,
+      "agreement_all": null,
+      "agreement_success_only": null,
+      "gold_n": 0,
+      "jev_accuracy": null,
+      "baseline_accuracy": null,
+      "baseline_to_jev_confusion": {},
+      "jev_success_latency": null,
+      "baseline_paired_latency": null
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "priority": {
+    "type": "enum",
+    "choices": ["SUPPORTED", "NOT_SUPPORTED"],
+    "description": "Whether the claim is suppported by the context."
+  }
+}

@@ -1,0 +1,5 @@
+modal==1.5.5
+python-dotenv==1.2.3
+transformers==5.17.0
+huggingface-hub==1.32.0
+openjev-sglang @ https://github.com/ekzhang/openjev-sglang/archive/7f84bedc169439f03379c2fa8d00ada220af2295.tar.gz

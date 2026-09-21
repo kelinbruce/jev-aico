@@ -1,0 +1,41 @@
+{
+  "model": "Qwen/Qwen3.5-4B",
+  "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "context": "Please add a filter to the reports page when you have time; there is no current business impact.",
+  "fields": {
+    "priority": {
+      "value": "P3_LOW",
+      "scores": {
+        "P0_CRITICAL": 0.004607157316058874,
+        "P1_HIGH": 0.0002945257001556456,
+        "P2_NORMAL": 0.0002293768775416538,
+        "P3_LOW": 0.9948689937591553
+      },
+      "logits": {
+        "P0_CRITICAL": 21.0,
+        "P1_HIGH": 18.25,
+        "P2_NORMAL": 18.0,
+        "P3_LOW": 26.375
+      },
+      "unconstrained_code_probabilities": {
+        "P0_CRITICAL": 0.004605173598974943,
+        "P1_HIGH": 0.0002943988947663456,
+        "P2_NORMAL": 0.00022927809914108366,
+        "P3_LOW": 0.9944406151771545
+      },
+      "allowed_code_probability_mass": 0.9995694756507874,
+      "decoding": {
+        "code_to_choice": {
+          "A": "P0_CRITICAL",
+          "B": "P1_HIGH",
+          "C": "P2_NORMAL",
+          "D": "P3_LOW"
+        },
+        "generated_code": "D",
+        "thinking": false
+      },
+      "input_tokens": 296,
+      "inference_seconds": 1.531255334150046
+    }
+  }
+}

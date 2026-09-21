@@ -1,0 +1,107 @@
+{
+  "model": "Qwen/Qwen3.5-4B",
+  "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "backend": "mlx",
+  "temperature": 1.0,
+  "temperature_fitted": false,
+  "context": "Our production payment service is completely down for every customer, and no one can complete a purchase.",
+  "output": {
+    "risk_level": "HIGH",
+    "requires_review": true,
+    "action_tier": "PAGE_ON_CALL"
+  },
+  "fields": {
+    "risk_level": {
+      "value": "HIGH",
+      "scores": {
+        "CRITICAL": 0.4174264073371887,
+        "HIGH": 0.5783774852752686,
+        "NORMAL": 0.004144091624766588,
+        "LOW": 5.191151285544038e-05
+      },
+      "logits": {
+        "CRITICAL": 24.390201568603516,
+        "HIGH": 24.716320037841797,
+        "NORMAL": 19.77777671813965,
+        "LOW": 15.397878646850586
+      },
+      "candidate_token_ids": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "code_to_choice": {
+        "A": "CRITICAL",
+        "B": "HIGH",
+        "C": "NORMAL",
+        "D": "LOW"
+      }
+    },
+    "requires_review": {
+      "value": true,
+      "scores": {
+        "false": 0.02477174438536167,
+        "true": 0.9752282500267029
+      },
+      "logits": {
+        "false": 22.36871910095215,
+        "true": 26.04168701171875
+      },
+      "candidate_token_ids": [
+        32,
+        33
+      ],
+      "code_to_choice": {
+        "A": false,
+        "B": true
+      }
+    },
+    "action_tier": {
+      "value": "PAGE_ON_CALL",
+      "scores": {
+        "PAGE_ON_CALL": 0.9454781413078308,
+        "EXPEDITE": 0.04671170935034752,
+        "NORMAL_QUEUE": 0.006122883874922991,
+        "BACKLOG": 0.0016873988788574934
+      },
+      "logits": {
+        "PAGE_ON_CALL": 25.510948181152344,
+        "EXPEDITE": 22.503252029418945,
+        "NORMAL_QUEUE": 20.471290588378906,
+        "BACKLOG": 19.182445526123047
+      },
+      "candidate_token_ids": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "code_to_choice": {
+        "A": "PAGE_ON_CALL",
+        "B": "EXPEDITE",
+        "C": "NORMAL_QUEUE",
+        "D": "BACKLOG"
+      }
+    }
+  },
+  "metrics": {
+    "mode": "parallel",
+    "fields": 3,
+    "prefix_tokens": 433,
+    "suffix_tokens": [
+      13,
+      13,
+      14
+    ],
+    "prefix_prefill_count": 1,
+    "branch_batches": 1,
+    "prefill_seconds": 2.3943562919739634,
+    "field_evaluation_seconds": 0.6906942080240697,
+    "total_seconds": 3.1036926249507815,
+    "mlx_peak_active_gib": 8.393757209181786,
+    "mlx_active_before_gib": 7.833829410374165,
+    "mlx_peak_above_start_gib": 0.559927798807621,
+    "full_vocabulary_projection": false
+  }
+}

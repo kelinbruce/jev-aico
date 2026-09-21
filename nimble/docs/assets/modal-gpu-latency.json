@@ -1,0 +1,2113 @@
+{
+  "endpoint": "https://bespokelabs--nimble-sglang-nimble.us-west.modal.direct",
+  "model_revision": "93ec5d6ff1a9cd31d6cc0e0c58d312465d36de7c",
+  "h100_hardware_verified": "NVIDIA H100 80GB HBM3, 81559 MiB (container startup log)",
+  "method": "Same three-field request, persistent HTTP connection, one excluded warmup, then 20 sequential identical requests per GPU. Cold start excluded. Repeated-prompt cache reuse enabled. Measurements were taken in separate allocations; network/routing overhead was not controlled.",
+  "runs": {
+    "L40S": {
+      "timestamp_utc": "2026-09-18T07:08:43.478034+00:00",
+      "url": "https://bespokelabs--nimble-sglang-nimble.us-west.modal.direct",
+      "request": {
+        "model": "nimble-latest",
+        "state": [
+          {
+            "role": "system",
+            "content": "You are a support assistant."
+          },
+          {
+            "role": "user",
+            "content": "I was charged twice. Please refund the duplicate."
+          }
+        ],
+        "questions": {
+          "refund": {
+            "type": "noul",
+            "instructions": "Does the user request a refund?"
+          },
+          "department": {
+            "type": "choice",
+            "instructions": "Which department should handle this?",
+            "criteria": {
+              "billing": "Payments and refunds",
+              "technical": "Software bugs"
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "instructions": "How urgent is the request?",
+            "criteria": [
+              "Routine",
+              "Urgent",
+              "Emergency"
+            ]
+          }
+        }
+      },
+      "method": "One warmup then 20 sequential identical requests using a persistent HTTP client; no intentional pauses; p95 uses linear interpolation. Warm results include repeated-prompt cache reuse.",
+      "readiness_wait_seconds": 158.23,
+      "sample_size": 20,
+      "end_to_end_ms": {
+        "min": 192.4,
+        "median": 200.95,
+        "mean": 205.93,
+        "p95": 237.77,
+        "max": 257.71
+      },
+      "server_total_ms": {
+        "min": 100.76,
+        "median": 102.38,
+        "mean": 106.73,
+        "p95": 132.38,
+        "max": 152.04
+      },
+      "runs": [
+        {
+          "run": 0,
+          "phase": "warmup",
+          "end_to_end_ms": 1003.471,
+          "server_timing_ms": {
+            "prepare": 43.57,
+            "prefill": 230.75,
+            "branches": 522.6
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 1,
+          "phase": "measured",
+          "end_to_end_ms": 257.712,
+          "server_timing_ms": {
+            "prepare": 9.63,
+            "prefill": 64.97,
+            "branches": 77.44
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 2,
+          "phase": "measured",
+          "end_to_end_ms": 236.724,
+          "server_timing_ms": {
+            "prepare": 7.48,
+            "prefill": 41.68,
+            "branches": 82.18
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 3,
+          "phase": "measured",
+          "end_to_end_ms": 204.663,
+          "server_timing_ms": {
+            "prepare": 6.9,
+            "prefill": 51.63,
+            "branches": 46.93
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 4,
+          "phase": "measured",
+          "end_to_end_ms": 197.129,
+          "server_timing_ms": {
+            "prepare": 6.23,
+            "prefill": 35.71,
+            "branches": 58.82
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 5,
+          "phase": "measured",
+          "end_to_end_ms": 199.391,
+          "server_timing_ms": {
+            "prepare": 6.39,
+            "prefill": 36.36,
+            "branches": 59.4
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 6,
+          "phase": "measured",
+          "end_to_end_ms": 210.026,
+          "server_timing_ms": {
+            "prepare": 6.36,
+            "prefill": 41.35,
+            "branches": 59.16
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 7,
+          "phase": "measured",
+          "end_to_end_ms": 203.024,
+          "server_timing_ms": {
+            "prepare": 6.18,
+            "prefill": 37.11,
+            "branches": 58.98
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 8,
+          "phase": "measured",
+          "end_to_end_ms": 201.119,
+          "server_timing_ms": {
+            "prepare": 6.63,
+            "prefill": 38.14,
+            "branches": 60.19
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 9,
+          "phase": "measured",
+          "end_to_end_ms": 203.698,
+          "server_timing_ms": {
+            "prepare": 6.29,
+            "prefill": 37.71,
+            "branches": 59.93
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 10,
+          "phase": "measured",
+          "end_to_end_ms": 214.733,
+          "server_timing_ms": {
+            "prepare": 6.62,
+            "prefill": 36.61,
+            "branches": 57.77
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 11,
+          "phase": "measured",
+          "end_to_end_ms": 195.924,
+          "server_timing_ms": {
+            "prepare": 6.35,
+            "prefill": 36.57,
+            "branches": 58.77
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 12,
+          "phase": "measured",
+          "end_to_end_ms": 199.481,
+          "server_timing_ms": {
+            "prepare": 6.32,
+            "prefill": 37.66,
+            "branches": 59.45
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 13,
+          "phase": "measured",
+          "end_to_end_ms": 203.603,
+          "server_timing_ms": {
+            "prepare": 6.42,
+            "prefill": 36.59,
+            "branches": 62.36
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 14,
+          "phase": "measured",
+          "end_to_end_ms": 205.061,
+          "server_timing_ms": {
+            "prepare": 6.26,
+            "prefill": 36.45,
+            "branches": 59.31
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 15,
+          "phase": "measured",
+          "end_to_end_ms": 198.597,
+          "server_timing_ms": {
+            "prepare": 6.45,
+            "prefill": 36.26,
+            "branches": 58.84
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 16,
+          "phase": "measured",
+          "end_to_end_ms": 200.786,
+          "server_timing_ms": {
+            "prepare": 6.29,
+            "prefill": 36.15,
+            "branches": 59.9
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 17,
+          "phase": "measured",
+          "end_to_end_ms": 199.827,
+          "server_timing_ms": {
+            "prepare": 6.2,
+            "prefill": 37.29,
+            "branches": 58.99
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 18,
+          "phase": "measured",
+          "end_to_end_ms": 192.401,
+          "server_timing_ms": {
+            "prepare": 6.25,
+            "prefill": 35.84,
+            "branches": 58.77
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 19,
+          "phase": "measured",
+          "end_to_end_ms": 199.918,
+          "server_timing_ms": {
+            "prepare": 6.48,
+            "prefill": 36.41,
+            "branches": 59.54
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 20,
+          "phase": "measured",
+          "end_to_end_ms": 194.823,
+          "server_timing_ms": {
+            "prepare": 6.28,
+            "prefill": 36.5,
+            "branches": 58.84
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889485902281
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676462863219,
+                  "technical": 0.02033235371367809
+                },
+                "confidence": 0.8566974311843006
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581778227598,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.28151328224184535,
+                  "1": 0.6753152576935494,
+                  "2": 0.043171460064605184
+                },
+                "confidence": 0.31038338669444143
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        }
+      ]
+    },
+    "H100": {
+      "timestamp_utc": "2026-09-18T07:15:22.746949+00:00",
+      "gpu_label": "H100",
+      "url": "https://bespokelabs--nimble-sglang-nimble.us-west.modal.direct",
+      "request": {
+        "model": "nimble-latest",
+        "state": [
+          {
+            "role": "system",
+            "content": "You are a support assistant."
+          },
+          {
+            "role": "user",
+            "content": "I was charged twice. Please refund the duplicate."
+          }
+        ],
+        "questions": {
+          "refund": {
+            "type": "noul",
+            "instructions": "Does the user request a refund?"
+          },
+          "department": {
+            "type": "choice",
+            "instructions": "Which department should handle this?",
+            "criteria": {
+              "billing": "Payments and refunds",
+              "technical": "Software bugs"
+            }
+          },
+          "urgency": {
+            "type": "score",
+            "instructions": "How urgent is the request?",
+            "criteria": [
+              "Routine",
+              "Urgent",
+              "Emergency"
+            ]
+          }
+        }
+      },
+      "method": "One warmup then sequential identical requests using a persistent HTTP client; no intentional pauses; p95 uses linear interpolation. Warm results include repeated-prompt cache reuse.",
+      "readiness_wait_seconds": 163.7,
+      "health": {
+        "status": "ok",
+        "startup_seconds": 145.73
+      },
+      "sample_size": 20,
+      "end_to_end_ms": {
+        "min": 287.56,
+        "median": 299.45,
+        "mean": 330.28,
+        "p95": 371.09,
+        "max": 679.81
+      },
+      "server_total_ms": {
+        "min": 66.2,
+        "median": 67.56,
+        "mean": 68.78,
+        "p95": 73.98,
+        "max": 87.67
+      },
+      "runs": [
+        {
+          "run": 0,
+          "phase": "warmup",
+          "end_to_end_ms": 4624.683,
+          "server_timing_ms": {
+            "prepare": 39.97,
+            "prefill": 3681.09,
+            "branches": 672.83
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889487059934
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9820137881297457,
+                  "technical": 0.01798621187025419
+                },
+                "confidence": 0.870020714322108
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581841958109,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132807930543,
+                  "1": 0.6753152542180804,
+                  "2": 0.043171464988865246
+                },
+                "confidence": 0.31038337552214446
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 1,
+          "phase": "measured",
+          "end_to_end_ms": 679.806,
+          "server_timing_ms": {
+            "prepare": 6.51,
+            "prefill": 29.33,
+            "branches": 37.42
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 2,
+          "phase": "measured",
+          "end_to_end_ms": 297.593,
+          "server_timing_ms": {
+            "prepare": 6.31,
+            "prefill": 27.33,
+            "branches": 34.17
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 3,
+          "phase": "measured",
+          "end_to_end_ms": 315.054,
+          "server_timing_ms": {
+            "prepare": 6.21,
+            "prefill": 26.91,
+            "branches": 35.37
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 4,
+          "phase": "measured",
+          "end_to_end_ms": 320.758,
+          "server_timing_ms": {
+            "prepare": 6.31,
+            "prefill": 27.13,
+            "branches": 34.3
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 5,
+          "phase": "measured",
+          "end_to_end_ms": 333.265,
+          "server_timing_ms": {
+            "prepare": 6.26,
+            "prefill": 26.88,
+            "branches": 33.91
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 6,
+          "phase": "measured",
+          "end_to_end_ms": 354.841,
+          "server_timing_ms": {
+            "prepare": 6.23,
+            "prefill": 27.24,
+            "branches": 34.23
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 7,
+          "phase": "measured",
+          "end_to_end_ms": 338.642,
+          "server_timing_ms": {
+            "prepare": 6.16,
+            "prefill": 27.0,
+            "branches": 33.72
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 8,
+          "phase": "measured",
+          "end_to_end_ms": 351.319,
+          "server_timing_ms": {
+            "prepare": 6.26,
+            "prefill": 26.68,
+            "branches": 54.73
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488087252
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9820137881297457,
+                  "technical": 0.01798621187025419
+                },
+                "confidence": 0.870020714322108
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581554829416,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132964708792,
+                  "1": 0.6753152515753001,
+                  "2": 0.04317145195382073
+                },
+                "confidence": 0.31038339566416995
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 9,
+          "phase": "measured",
+          "end_to_end_ms": 339.402,
+          "server_timing_ms": {
+            "prepare": 6.09,
+            "prefill": 26.9,
+            "branches": 34.92
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 10,
+          "phase": "measured",
+          "end_to_end_ms": 295.55,
+          "server_timing_ms": {
+            "prepare": 6.07,
+            "prefill": 26.01,
+            "branches": 34.12
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 11,
+          "phase": "measured",
+          "end_to_end_ms": 299.979,
+          "server_timing_ms": {
+            "prepare": 6.27,
+            "prefill": 27.27,
+            "branches": 34.01
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 12,
+          "phase": "measured",
+          "end_to_end_ms": 296.232,
+          "server_timing_ms": {
+            "prepare": 6.25,
+            "prefill": 27.55,
+            "branches": 34.19
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 13,
+          "phase": "measured",
+          "end_to_end_ms": 298.224,
+          "server_timing_ms": {
+            "prepare": 6.13,
+            "prefill": 27.04,
+            "branches": 34.41
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 14,
+          "phase": "measured",
+          "end_to_end_ms": 288.464,
+          "server_timing_ms": {
+            "prepare": 6.15,
+            "prefill": 27.19,
+            "branches": 34.18
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 15,
+          "phase": "measured",
+          "end_to_end_ms": 287.564,
+          "server_timing_ms": {
+            "prepare": 6.17,
+            "prefill": 26.88,
+            "branches": 34.39
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 16,
+          "phase": "measured",
+          "end_to_end_ms": 290.215,
+          "server_timing_ms": {
+            "prepare": 6.3,
+            "prefill": 27.18,
+            "branches": 34.06
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 17,
+          "phase": "measured",
+          "end_to_end_ms": 298.914,
+          "server_timing_ms": {
+            "prepare": 6.3,
+            "prefill": 26.89,
+            "branches": 34.04
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 18,
+          "phase": "measured",
+          "end_to_end_ms": 332.695,
+          "server_timing_ms": {
+            "prepare": 6.23,
+            "prefill": 27.11,
+            "branches": 34.54
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 19,
+          "phase": "measured",
+          "end_to_end_ms": 290.769,
+          "server_timing_ms": {
+            "prepare": 6.56,
+            "prefill": 26.86,
+            "branches": 33.88
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        },
+        {
+          "run": 20,
+          "phase": "measured",
+          "end_to_end_ms": 296.276,
+          "server_timing_ms": {
+            "prepare": 6.25,
+            "prefill": 26.31,
+            "branches": 34.27
+          },
+          "response": {
+            "model": "nimble-latest",
+            "answers": {
+              "refund": {
+                "type": "noul",
+                "noul": 0.9990889488129109
+              },
+              "department": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9796676441344095,
+                  "technical": 0.02033235586559037
+                },
+                "confidence": 0.8566974191541572
+              },
+              "urgency": {
+                "type": "score",
+                "score": 0.7616581826196186,
+                "legend": {
+                  "0": "Routine",
+                  "1": "Urgent",
+                  "2": "Emergency"
+                },
+                "probabilities": {
+                  "0": 0.2815132765761195,
+                  "1": 0.6753152642281426,
+                  "2": 0.04317145919573799
+                },
+                "confidence": 0.3103833933818735
+              }
+            },
+            "usage": {
+              "input_tokens": 1329,
+              "output_tokens": 4
+            }
+          }
+        }
+      ]
+    }
+  },
+  "median_outside_server_stages_ms": {
+    "L40S": 97.86,
+    "H100": 232.06
+  },
+  "comparison": {
+    "h100_server_median_reduction_percent": 34.01,
+    "h100_end_to_end_median_increase_percent": 49.02
+  }
+}

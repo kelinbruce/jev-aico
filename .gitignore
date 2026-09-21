@@ -1,0 +1,18 @@
+# Credentials and local configuration
+jev_api_key.txt
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local caches and environments
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Portable bundle is available as source in skill_selection_20/
+skill_selection_20.zip

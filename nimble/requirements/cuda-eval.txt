@@ -1,0 +1,8 @@
+# Tested CPU projection path with Torch 2.14; GPU runtime is recorded per run.
+# The Runpod PyTorch 2.8/CUDA 12.8 image already supplies a compatible Torch.
+torch>=2.8,<3
+transformers==5.17.0
+accelerate==1.15.0
+sentencepiece==0.2.2
+pillow==12.3.0
+python-dotenv==1.2.3

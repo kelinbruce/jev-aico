@@ -1,0 +1,125 @@
+[
+  {
+    "model": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "context": "Our production payment service is completely down for every customer, and no one can complete a purchase.",
+    "fields": {
+      "priority": {
+        "value": "P0_CRITICAL",
+        "scores": {
+          "P0_CRITICAL": 0.9874120950698853,
+          "P1_HIGH": 0.007538984529674053,
+          "P2_NORMAL": 0.0031427163630723953,
+          "P3_LOW": 0.0019061538623645902
+        },
+        "logits": {
+          "P0_CRITICAL": 26.125,
+          "P1_HIGH": 21.25,
+          "P2_NORMAL": 20.375,
+          "P3_LOW": 19.875
+        },
+        "unconstrained_code_probabilities": {
+          "P0_CRITICAL": 0.9804074168205261,
+          "P1_HIGH": 0.007485502865165472,
+          "P2_NORMAL": 0.0031204221304506063,
+          "P3_LOW": 0.0018926316406577826
+        },
+        "allowed_code_probability_mass": 0.9929059743881226,
+        "decoding": {
+          "code_to_choice": {
+            "A": "P0_CRITICAL",
+            "B": "P1_HIGH",
+            "C": "P2_NORMAL",
+            "D": "P3_LOW"
+          },
+          "generated_code": "A",
+          "thinking": false
+        },
+        "input_tokens": 195,
+        "inference_seconds": 1.5455625420436263
+      }
+    }
+  },
+  {
+    "model": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "context": "A major customer cannot export their monthly report, but they can still access their data and continue daily work.",
+    "fields": {
+      "priority": {
+        "value": "P2_NORMAL",
+        "scores": {
+          "P0_CRITICAL": 0.133380725979805,
+          "P1_HIGH": 0.11770807951688766,
+          "P2_NORMAL": 0.5977709293365479,
+          "P3_LOW": 0.15114018321037292
+        },
+        "logits": {
+          "P0_CRITICAL": 22.75,
+          "P1_HIGH": 22.625,
+          "P2_NORMAL": 24.25,
+          "P3_LOW": 22.875
+        },
+        "unconstrained_code_probabilities": {
+          "P0_CRITICAL": 0.1330023556947708,
+          "P1_HIGH": 0.11737416684627533,
+          "P2_NORMAL": 0.596075177192688,
+          "P3_LOW": 0.15071141719818115
+        },
+        "allowed_code_probability_mass": 0.9971631169319153,
+        "decoding": {
+          "code_to_choice": {
+            "A": "P0_CRITICAL",
+            "B": "P1_HIGH",
+            "C": "P2_NORMAL",
+            "D": "P3_LOW"
+          },
+          "generated_code": "C",
+          "thinking": false
+        },
+        "input_tokens": 197,
+        "inference_seconds": 0.5332645419985056
+      }
+    }
+  },
+  {
+    "model": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "context": "Please add a filter to the reports page when you have time; there is no current business impact.",
+    "fields": {
+      "priority": {
+        "value": "P2_NORMAL",
+        "scores": {
+          "P0_CRITICAL": 0.08166909962892532,
+          "P1_HIGH": 0.012524361722171307,
+          "P2_NORMAL": 0.6838069558143616,
+          "P3_LOW": 0.2219996154308319
+        },
+        "logits": {
+          "P0_CRITICAL": 22.5,
+          "P1_HIGH": 20.625,
+          "P2_NORMAL": 24.625,
+          "P3_LOW": 23.5
+        },
+        "unconstrained_code_probabilities": {
+          "P0_CRITICAL": 0.08157110959291458,
+          "P1_HIGH": 0.012509334832429886,
+          "P2_NORMAL": 0.6829864978790283,
+          "P3_LOW": 0.2217332422733307
+        },
+        "allowed_code_probability_mass": 0.9988001585006714,
+        "decoding": {
+          "code_to_choice": {
+            "A": "P0_CRITICAL",
+            "B": "P1_HIGH",
+            "C": "P2_NORMAL",
+            "D": "P3_LOW"
+          },
+          "generated_code": "C",
+          "thinking": false
+        },
+        "input_tokens": 196,
+        "inference_seconds": 0.7426244579255581
+      }
+    }
+  }
+]

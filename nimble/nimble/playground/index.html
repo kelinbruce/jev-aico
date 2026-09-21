@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="playground-config" content="__CONFIG__">
+  <meta name="playground-token" content="__SESSION_TOKEN__">
+  <title>Nimble × Jev — Comparison</title><link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="Nimble comparison home"><span class="brand-icon">n.</span>bespoke<span class="brand-light"> / model lab</span></a><div class="hardware"><span id="ready-dot" class="dot"></span><span id="connection">Connecting to models…</span><span class="divider"></span><span id="remaining">Temporary GPU session</span></div></header>
+<main>
+  <section class="heading"><div><div class="eyebrow">SIDE-BY-SIDE COMPARISON</div><h1>Nimble <span>×</span> Jev</h1><p id="subtitle">One input. H100, MacBook, and Jev.</p></div><div class="actions"><button id="export" class="secondary" disabled>Export results</button><button id="run-all" class="secondary" disabled>Run all 30</button></div></section>
+  <section class="summary" aria-label="Comparison summary"><div><span class="summary-label">DATASET</span><strong>30 held-out examples</strong><small>10 Choice · 10 Boolean · 10 Score</small></div><div><span class="summary-label">COMPARED</span><strong id="completed">0 / 30</strong><small id="failure-count">Ready for a fresh comparison</small></div><div><span class="summary-label">MODEL AGREEMENT</span><strong id="agreement">—</strong><small id="agreement-label">All three give the same answer</small></div><div><span class="summary-label">MEDIAN RESPONSE</span><strong id="median-times">—</strong><small>Latest complete runs · includes transport</small></div></section>
+  <div id="notice" class="notice" role="status" hidden></div>
+  <div class="workspace">
+    <aside class="sample-panel"><div class="panel-heading"><h2>Examples</h2><select id="kind-filter" aria-label="Filter examples by question type"><option value="all">All types</option><option value="choice">Choice</option><option value="noul">Boolean</option><option value="score">Score</option></select></div><nav id="examples" aria-label="Held-out examples"></nav></aside>
+    <section class="detail">
+      <div class="input-card"><div class="input-title"><div><span id="sample-number" class="eyebrow">EXAMPLE</span><h2 id="domain">Loading examples…</h2></div><span id="type-badge" class="type-badge"></span></div>
+        <label class="field-label" for="context">Context <span id="context-hint">Editable · sent to all three backends</span></label><textarea id="context" spellcheck="false" rows="7"></textarea>
+        <div class="question-heading"><span class="field-label">Question</span><button id="reset" class="text-button">Reset example</button></div><p id="question" class="question"></p>
+        <details class="options-detail"><summary id="options-summary">Candidate definitions</summary><div id="criteria"></div></details>
+        <div class="run-line"><span id="reference" class="reference"></span><button id="run" class="primary" disabled>Compare this example <span aria-hidden="true">↗</span></button></div>
+      </div>
+      <div class="result-heading"><h2>Results</h2><span id="comparison-status">Run an example to compare</span></div>
+      <div class="results-grid" id="results-grid"><article id="nimble-card" class="model-card nimble"></article><article id="mac-card" class="model-card mac"></article><article id="jev-card" class="model-card jev"></article></div>
+      <div class="result-notes" id="result-notes"><p><strong>Read the timings:</strong> response time includes the request and transport from this computer. H100 uses a private connection to RunPod; MacBook runs locally; Jev uses its API. H100 and Mac scoring exclude transport. All three run concurrently, after warmup. Jev does not expose model-only scoring time.</p><p>Both Nimble backends use the same 2,826-example adapter. MLX uses merged BF16 weights and a FP32 candidate head; H100 uses unmerged BF16 weights, so small numerical differences are possible. Probabilities compare the supplied candidates; they are not a guarantee of correctness. References are synthetic, model-checked labels. Score agreement uses the most likely level; weighted scores are also shown.</p></div>
+      <details class="raw-detail"><summary>View exact input and results</summary><pre id="raw"></pre></details>
+    </section>
+  </div>
+  <footer id="footer"><span>Nimble 9B · 2,826 training examples · BF16 · H100 + MacBook M5 Pro</span><span>Jev 1.13.0 · TypeSafe API</span><span>Credentials stay on this computer.</span></footer>
+</main>
+</body>
+</html>

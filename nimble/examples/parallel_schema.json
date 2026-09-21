@@ -1,0 +1,28 @@
+{
+  "risk_level": {
+    "type": "enum",
+    "choices": ["CRITICAL", "HIGH", "NORMAL", "LOW"],
+    "description": "Current customer business risk.",
+    "choice_descriptions": {
+      "CRITICAL": "Widespread production outage or active data loss.",
+      "HIGH": "A customer's critical operation is blocked without a workaround.",
+      "NORMAL": "Moderate degradation with work able to continue.",
+      "LOW": "No current business impact or an optional enhancement."
+    }
+  },
+  "requires_review": {
+    "type": "boolean",
+    "description": "True if the incident requires immediate human review because customers cannot complete a critical business operation; otherwise false."
+  },
+  "action_tier": {
+    "type": "enum",
+    "choices": ["PAGE_ON_CALL", "EXPEDITE", "NORMAL_QUEUE", "BACKLOG"],
+    "description": "Operational response to this report.",
+    "choice_descriptions": {
+      "PAGE_ON_CALL": "Immediate response to widespread outage or data loss.",
+      "EXPEDITE": "Urgent targeted response to a major blocked customer.",
+      "NORMAL_QUEUE": "Schedule a fix for a moderate issue with a workaround.",
+      "BACKLOG": "Optional future work with no current business impact."
+    }
+  }
+}

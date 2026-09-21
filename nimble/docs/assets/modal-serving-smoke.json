@@ -1,0 +1,118 @@
+{
+  "url": "https://bespokelabs--nimble-sglang-nimble.us-west.modal.direct",
+  "unauthorized_status": 401,
+  "health": {
+    "status": "ok",
+    "startup_seconds": 144.12
+  },
+  "readiness_seconds": 650.77,
+  "runs": [
+    {
+      "elapsed_ms": 1062.3,
+      "timing": "prepare;dur=45.26, prefill;dur=207.75, branches;dur=708.12",
+      "prefix_tokens": "313",
+      "cached_tokens": null,
+      "response": {
+        "model": "nimble-latest",
+        "answers": {
+          "refund": {
+            "type": "noul",
+            "noul": 0.9994472214030169
+          },
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9986749773985448,
+              "technical": 0.001325022601455207
+            },
+            "confidence": 0.9854227557239629
+          },
+          "urgency": {
+            "type": "score",
+            "score": 0.0025241659085396386,
+            "legend": {
+              "0": "Routine billing request; service works",
+              "1": "Some functionality unavailable",
+              "2": "Complete service outage"
+            },
+            "probabilities": {
+              "0": 0.9975016375718438,
+              "1": 0.0024725589477726873,
+              "2": 2.5803480383475674e-05
+            },
+            "confidence": 0.9839712407436262
+          }
+        },
+        "usage": {
+          "input_tokens": 1289,
+          "output_tokens": 4
+        }
+      }
+    },
+    {
+      "elapsed_ms": 309.88,
+      "timing": "prepare;dur=6.48, prefill;dur=39.94, branches;dur=59.95",
+      "prefix_tokens": "313",
+      "cached_tokens": null,
+      "response": {
+        "model": "nimble-latest",
+        "answers": {
+          "refund": {
+            "type": "noul",
+            "noul": 0.9994472212715222
+          },
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9986749773993151,
+              "technical": 0.001325022600684964
+            },
+            "confidence": 0.9854227557313248
+          },
+          "urgency": {
+            "type": "score",
+            "score": 0.0032347894272022723,
+            "legend": {
+              "0": "Routine billing request; service works",
+              "1": "Some functionality unavailable",
+              "2": "Complete service outage"
+            },
+            "probabilities": {
+              "0": 0.9967963135024999,
+              "1": 0.0031725835677981935,
+              "2": 3.1102929702039415e-05
+            },
+            "confidence": 0.9801805618679951
+          }
+        },
+        "usage": {
+          "input_tokens": 1289,
+          "output_tokens": 4
+        }
+      }
+    }
+  ],
+  "validation": {
+    "models": 200,
+    "limits": 200,
+    "openapi": 200,
+    "too_many_candidates": 422
+  },
+  "cache_verification": {
+    "source": "SGLang scheduler logs",
+    "first_field_batch": {
+      "sequences": 3,
+      "new_tokens": 208,
+      "cached_tokens": 768
+    },
+    "repeated_field_batch": {
+      "sequences": 3,
+      "new_tokens": 16,
+      "cached_tokens": 960
+    },
+    "note": "The Rust response omits cached_tokens; scheduler logs establish reuse."
+  },
+  "readiness_note": "Includes earlier failed containers and redeploys; health.startup_seconds is the successful backend initialization only."
+}

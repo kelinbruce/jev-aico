@@ -1,0 +1,41 @@
+{
+  "source": "Unpublished local evaluation artifact",
+  "dataset_fingerprint": "286a918b9882581aca3d87d3e65efbf0d6d8294cc0afe755b53d7262c0a54157",
+  "models": [
+    {
+      "name": "Gemma 3 270M IT",
+      "correct": 93,
+      "count": 324
+    },
+    {
+      "name": "Qwen3.5-0.8B",
+      "correct": 147,
+      "count": 324
+    },
+    {
+      "name": "Qwen3.5-4B",
+      "correct": 199,
+      "count": 324
+    },
+    {
+      "name": "Qwen3.5-9B",
+      "correct": 215,
+      "count": 324
+    },
+    {
+      "name": "Qwen3.8-27B",
+      "correct": 275,
+      "count": 324
+    },
+    {
+      "name": "Bespoke-Nimble-9B",
+      "correct": 292,
+      "count": 324
+    },
+    {
+      "name": "Jev 1.13.0",
+      "correct": 302,
+      "count": 324
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1456" viewBox="0 0 1600 1456" role="img" aria-labelledby="title">
+<title id="title">Introducing Bespoke Nimble</title>
+<style>
+.serif { font-family: 'GT Alpina', Georgia, 'Times New Roman', serif; }
+.sans { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+.mono { font-family: 'MD IO', 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5E5A57"/></marker></defs>
+<rect x="0" y="0" width="1600" height="1456" rx="0" fill="#F8F3E6"/>
+<text x="48" y="96" font-size="56" fill="#0F484D" font-weight="400" text-anchor="start" class="serif">Introducing Bespoke Nimble</text>
+<text x="48" y="140" font-size="24" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">An open data, open model, open recipe for an open Jev</text>
+<text x="1552" y="96" font-size="24" fill="#F44029" font-weight="700" text-anchor="end" class="sans">Bespoke Labs</text>
+<rect x="48" y="180" width="734" height="580" rx="22" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<circle cx="104" cy="238" r="22" fill="#F44029"/>
+<text x="104" y="246" font-size="22" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="sans">1</text>
+<text x="142" y="249" font-size="34" fill="#0F484D" font-weight="400" text-anchor="start" class="serif">Serving</text>
+<text x="142" y="283" font-size="21" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">Read the prompt once, then one token per question</text>
+<rect x="80" y="312" width="350" height="136" rx="12" fill="#D4E8E3"/>
+<text x="100" y="344" font-size="19" fill="#0F484D" font-weight="700" text-anchor="start" class="sans">Text</text>
+<text x="100" y="382" font-size="21" fill="#231F20" font-weight="400" text-anchor="start" class="sans">I was charged twice.</text>
+<text x="100" y="412" font-size="21" fill="#231F20" font-weight="400" text-anchor="start" class="sans">Please refund the duplicate.</text>
+<rect x="450" y="312" width="300" height="136" rx="12" fill="#D4E8E3"/>
+<text x="470" y="344" font-size="19" fill="#0F484D" font-weight="700" text-anchor="start" class="sans">Questions</text>
+<text x="470" y="374" font-size="20" fill="#231F20" font-weight="600" text-anchor="start" class="sans">refund</text>
+<text x="730" y="374" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="end" class="sans">Noul</text>
+<text x="470" y="401" font-size="20" fill="#231F20" font-weight="600" text-anchor="start" class="sans">department</text>
+<text x="730" y="401" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="end" class="sans">Choice</text>
+<text x="470" y="428" font-size="20" fill="#231F20" font-weight="600" text-anchor="start" class="sans">urgency</text>
+<text x="730" y="428" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="end" class="sans">Score</text>
+<line x1="255" y1="448" x2="255" y2="472" stroke="#5E5A57" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="600" y1="448" x2="600" y2="472" stroke="#5E5A57" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="80" y="476" width="670" height="48" rx="12" fill="#0F484D"/>
+<text x="415" y="507" font-size="21" fill="#FFF9F9" font-weight="600" text-anchor="middle" class="sans">Prefill the shared prompt once (KV cache)</text>
+<line x1="187" y1="524" x2="187" y2="548" stroke="#5E5A57" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="80" y="552" width="214" height="150" rx="12" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="96" y="582" font-size="20" fill="#231F20" font-weight="600" text-anchor="start" class="sans">refund</text>
+<text x="98" y="615" font-size="16" fill="#5E5A57" font-weight="600" text-anchor="start" class="mono">A</text>
+<text x="120" y="615" font-size="18" fill="#231F20" font-weight="400" text-anchor="start" class="sans">false</text>
+<text x="278" y="615" font-size="18" fill="#231F20" font-weight="400" text-anchor="end" class="sans">0.1%</text>
+<rect x="90" y="628" width="193.7731150224034" height="26" rx="6" fill="#F44029" fill-opacity="0.22"/>
+<text x="98" y="647" font-size="16" fill="#5E5A57" font-weight="600" text-anchor="start" class="mono">B</text>
+<text x="120" y="647" font-size="18" fill="#231F20" font-weight="600" text-anchor="start" class="sans">true</text>
+<text x="278" y="647" font-size="18" fill="#231F20" font-weight="600" text-anchor="end" class="sans">99.9%</text>
+<line x1="415" y1="524" x2="415" y2="548" stroke="#5E5A57" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="308" y="552" width="214" height="150" rx="12" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="324" y="582" font-size="20" fill="#231F20" font-weight="600" text-anchor="start" class="sans">department</text>
+<rect x="318" y="596" width="185.83497985198966" height="26" rx="6" fill="#F44029" fill-opacity="0.22"/>
+<text x="326" y="615" font-size="16" fill="#5E5A57" font-weight="600" text-anchor="start" class="mono">A</text>
+<text x="348" y="615" font-size="18" fill="#231F20" font-weight="600" text-anchor="start" class="sans">billing</text>
+<text x="506" y="615" font-size="18" fill="#231F20" font-weight="600" text-anchor="end" class="sans">95.8%</text>
+<rect x="318" y="628" width="8.165020148010319" height="26" rx="6" fill="#B9C8DD" fill-opacity="0.45"/>
+<text x="326" y="647" font-size="16" fill="#5E5A57" font-weight="600" text-anchor="start" class="mono">B</text>
+<text x="348" y="647" font-size="18" fill="#231F20" font-weight="400" text-anchor="start" class="sans">technical</text>
+<text x="506" y="647" font-size="18" fill="#231F20" font-weight="400" text-anchor="end" class="sans">4.2%</text>
+<line x1="643" y1="524" x2="643" y2="548" stroke="#5E5A57" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="536" y="552" width="214" height="150" rx="12" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="552" y="582" font-size="20" fill="#231F20" font-weight="600" text-anchor="start" class="sans">urgency</text>
+<rect x="546" y="596" width="42.73005667914309" height="26" rx="6" fill="#B9C8DD" fill-opacity="0.45"/>
+<text x="554" y="615" font-size="16" fill="#5E5A57" font-weight="600" text-anchor="start" class="mono">A</text>
+<text x="576" y="615" font-size="18" fill="#231F20" font-weight="400" text-anchor="start" class="sans">Routine</text>
+<text x="734" y="615" font-size="18" fill="#231F20" font-weight="400" text-anchor="end" class="sans">22.0%</text>
+<rect x="546" y="628" width="149.1425390676097" height="26" rx="6" fill="#F44029" fill-opacity="0.22"/>
+<text x="554" y="647" font-size="16" fill="#5E5A57" font-weight="600" text-anchor="start" class="mono">B</text>
+<text x="576" y="647" font-size="18" fill="#231F20" font-weight="600" text-anchor="start" class="sans">Urgent</text>
+<text x="734" y="647" font-size="18" fill="#231F20" font-weight="600" text-anchor="end" class="sans">76.9%</text>
+<text x="554" y="679" font-size="16" fill="#5E5A57" font-weight="600" text-anchor="start" class="mono">C</text>
+<text x="576" y="679" font-size="18" fill="#231F20" font-weight="400" text-anchor="start" class="sans">Emergency</text>
+<text x="734" y="679" font-size="18" fill="#231F20" font-weight="400" text-anchor="end" class="sans">1.1%</text>
+<text x="80" y="736" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">No text to parse. Median 106 ms per question on one H100.</text>
+<rect x="818" y="180" width="734" height="580" rx="22" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<circle cx="874" cy="238" r="22" fill="#F44029"/>
+<text x="874" y="246" font-size="22" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="sans">2</text>
+<text x="912" y="249" font-size="34" fill="#0F484D" font-weight="400" text-anchor="start" class="serif">Data curation</text>
+<text x="912" y="283" font-size="21" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">Change one fact, and the correct answer flips</text>
+<rect x="850" y="312" width="670" height="56" rx="12" fill="#D4E8E3"/>
+<text x="870" y="347" font-size="19" fill="#0F484D" font-weight="700" text-anchor="start" class="sans">Rule</text>
+<text x="930" y="347" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">Only Mira may authorize refunds for account 42.</text>
+<rect x="850" y="384" width="323" height="152" rx="12" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="870" y="414" font-size="19" fill="#5E5A57" font-weight="600" text-anchor="start" class="sans">Example A</text>
+<text x="870" y="446" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">The sole authorization</text>
+<text x="870" y="472" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">was signed by</text>
+<text x="1153" y="472" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="end" class="sans">Authorized?</text>
+<rect x="870" y="484" width="74" height="34" rx="8" fill="#DAF767"/>
+<text x="883" y="508" font-size="20" fill="#231F20" font-weight="700" text-anchor="start" class="sans">Mira</text>
+<rect x="1069" y="484" width="84" height="34" rx="17" fill="#0F484D"/>
+<text x="1111" y="507" font-size="18" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="mono">true</text>
+<rect x="1197" y="384" width="323" height="152" rx="12" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="1217" y="414" font-size="19" fill="#5E5A57" font-weight="600" text-anchor="start" class="sans">Example B</text>
+<text x="1217" y="446" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">The sole authorization</text>
+<text x="1217" y="472" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">was signed by</text>
+<text x="1500" y="472" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="end" class="sans">Authorized?</text>
+<rect x="1217" y="484" width="74" height="34" rx="8" fill="#DAF767"/>
+<text x="1230" y="508" font-size="20" fill="#231F20" font-weight="700" text-anchor="start" class="sans">Noah</text>
+<rect x="1416" y="484" width="84" height="34" rx="17" fill="#F44029"/>
+<text x="1458" y="507" font-size="18" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="mono">false</text>
+<circle cx="862" cy="579" r="12" fill="#0F484D"/>
+<text x="862" y="585" font-size="15" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="sans">1</text>
+<text x="886" y="586" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">Extract a fact and flip one fact</text>
+<circle cx="862" cy="611" r="12" fill="#0F484D"/>
+<text x="862" y="617" font-size="15" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="sans">2</text>
+<text x="886" y="618" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">Check that removing a fact makes the answer unknown</text>
+<circle cx="862" cy="643" r="12" fill="#0F484D"/>
+<text x="862" y="649" font-size="15" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="sans">3</text>
+<text x="886" y="650" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">Keep pairs that pass every check</text>
+<line x1="850" y1="690" x2="1520" y2="690" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="850" y="730" text-anchor="start" class="sans"><tspan font-size="30" fill="#231F20" font-weight="700">2,676</tspan><tspan font-size="20" fill="#5E5A57" font-weight="400"> training examples across </tspan><tspan font-size="30" fill="#231F20" font-weight="700">10</tspan><tspan font-size="20" fill="#5E5A57" font-weight="400"> categories</tspan></text>
+<rect x="48" y="796" width="734" height="580" rx="22" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<circle cx="104" cy="854" r="22" fill="#F44029"/>
+<text x="104" y="862" font-size="22" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="sans">3</text>
+<text x="142" y="865" font-size="34" fill="#0F484D" font-weight="400" text-anchor="start" class="serif">Training</text>
+<text x="142" y="899" font-size="21" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">Fine-tune Qwen3.5-9B on the answer tokens only</text>
+<rect x="80" y="928" width="214" height="190" rx="12" fill="#D4E8E3"/>
+<text x="100" y="958" font-size="19" fill="#0F484D" font-weight="700" text-anchor="start" class="sans">Prompt</text>
+<text x="100" y="990" font-size="17" fill="#231F20" font-weight="400" text-anchor="start" class="mono">context …</text>
+<text x="100" y="1016" font-size="17" fill="#231F20" font-weight="400" text-anchor="start" class="mono">schema</text>
+<text x="120" y="1042" font-size="17" fill="#231F20" font-weight="400" text-anchor="start" class="mono">A false</text>
+<text x="120" y="1068" font-size="17" fill="#231F20" font-weight="400" text-anchor="start" class="mono">B true</text>
+<text x="100" y="1094" font-size="17" fill="#231F20" font-weight="400" text-anchor="start" class="mono">field authorized</text>
+<line x1="300" y1="1023" x2="324" y2="1023" stroke="#5E5A57" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="330" y="928" width="190" height="190" rx="14" fill="#B9C8DD"/>
+<text x="425" y="980" font-size="21" fill="#231F20" font-weight="700" text-anchor="middle" class="sans">Qwen3.5-9B</text>
+<text x="425" y="1008" font-size="18" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">base weights frozen</text>
+<rect x="343" y="1032" width="164" height="38" rx="19" fill="#F44029"/>
+<text x="425" y="1057" font-size="19" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="sans">LoRA rank 16</text>
+<text x="425" y="1096" font-size="18" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">trained</text>
+<line x1="526" y1="1023" x2="556" y2="1023" stroke="#5E5A57" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="562" y="928" width="188" height="190" rx="12" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="656" y="958" font-size="19" fill="#0F484D" font-weight="700" text-anchor="middle" class="sans">Answer logits</text>
+<rect x="600" y="1040" width="44" height="46" rx="4" fill="#B9C8DD"/>
+<rect x="670" y="992" width="44" height="94" rx="4" fill="#F44029"/>
+<line x1="584" y1="1086" x2="730" y2="1086" stroke="#5E5A57" stroke-width="1.5"/>
+<text x="622" y="1108" font-size="17" fill="#231F20" font-weight="600" text-anchor="middle" class="mono">A</text>
+<text x="692" y="1108" font-size="17" fill="#231F20" font-weight="600" text-anchor="middle" class="mono">B</text>
+<text x="692" y="982" font-size="17" fill="#231F20" font-weight="600" text-anchor="middle" class="sans">label</text>
+<text x="80" y="1156" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">The loss is cross-entropy over the allowed answer codes only.</text>
+<text x="80" y="1186" font-size="20" fill="#231F20" font-weight="400" text-anchor="start" class="sans">Labels come from our checked data. We did not distill from Jev.</text>
+<text x="80" y="1230" font-size="19" fill="#0F484D" font-weight="700" text-anchor="start" class="sans">Recipe</text>
+<rect x="80" y="1244" width="178" height="38" rx="19" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="169.0" y="1269.84" font-size="19" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">2,676 examples</text>
+<rect x="270" y="1244" width="157" height="38" rx="19" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="348.5" y="1269.84" font-size="19" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">LoRA rank 16</text>
+<rect x="439" y="1244" width="220" height="38" rx="19" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="549.0" y="1269.84" font-size="19" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">Learning rate 5e-5</text>
+<rect x="80" y="1294" width="157" height="38" rx="19" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="158.5" y="1319.84" font-size="19" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">Batch size 8</text>
+<rect x="249" y="1294" width="105" height="38" rx="19" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="301.5" y="1319.84" font-size="19" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">1 epoch</text>
+<rect x="366" y="1294" width="74" height="38" rx="19" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="403.0" y="1319.84" font-size="19" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">BF16</text>
+<rect x="452" y="1294" width="74" height="38" rx="19" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="489.0" y="1319.84" font-size="19" fill="#231F20" font-weight="400" text-anchor="middle" class="sans">H100</text>
+<rect x="818" y="796" width="734" height="580" rx="22" fill="#FFF9F9" stroke="#E4DACA" stroke-width="1.5"/>
+<circle cx="874" cy="854" r="22" fill="#F44029"/>
+<text x="874" y="862" font-size="22" fill="#FFF9F9" font-weight="700" text-anchor="middle" class="sans">4</text>
+<text x="912" y="865" font-size="34" fill="#0F484D" font-weight="400" text-anchor="start" class="serif">Results</text>
+<text x="912" y="899" font-size="21" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">Agreement with reference labels on 324 held-out examples</text>
+<line x1="1078" y1="928" x2="1078" y2="1208" stroke="#E4DACA" stroke-width="1.5"/>
+<text x="1064" y="953" font-size="20" fill="#231F20" font-weight="400" text-anchor="end" class="sans">Jev 1.13.0</text>
+<path d="M1078,936 H1409.5555555555557 A4,4 0 0 1 1413.5555555555557,940 V954 A4,4 0 0 1 1409.5555555555557,958 H1078 Z" fill="#0F484D"/>
+<text x="1423.5555555555557" y="953" font-size="19" fill="#231F20" font-weight="400" text-anchor="start" class="sans">93.2%</text>
+<text x="1064" y="991" font-size="20" fill="#231F20" font-weight="700" text-anchor="end" class="sans">Bespoke-Nimble-9B</text>
+<path d="M1078,974 H1398.4444444444443 A4,4 0 0 1 1402.4444444444443,978 V992 A4,4 0 0 1 1398.4444444444443,996 H1078 Z" fill="#F44029"/>
+<text x="1412.4444444444443" y="991" font-size="19" fill="#231F20" font-weight="700" text-anchor="start" class="sans">90.1%</text>
+<text x="1064" y="1029" font-size="20" fill="#231F20" font-weight="400" text-anchor="end" class="sans">Qwen3.8-27B</text>
+<path d="M1078,1012 H1379.5555555555557 A4,4 0 0 1 1383.5555555555557,1016 V1030 A4,4 0 0 1 1379.5555555555557,1034 H1078 Z" fill="#B9C8DD"/>
+<text x="1393.5555555555557" y="1029" font-size="19" fill="#231F20" font-weight="400" text-anchor="start" class="sans">84.9%</text>
+<text x="1064" y="1067" font-size="20" fill="#231F20" font-weight="400" text-anchor="end" class="sans">Qwen3.5-9B</text>
+<path d="M1078,1050 H1312.888888888889 A4,4 0 0 1 1316.888888888889,1054 V1068 A4,4 0 0 1 1312.888888888889,1072 H1078 Z" fill="#B9C8DD"/>
+<text x="1326.888888888889" y="1067" font-size="19" fill="#231F20" font-weight="400" text-anchor="start" class="sans">66.4%</text>
+<text x="1064" y="1105" font-size="20" fill="#231F20" font-weight="400" text-anchor="end" class="sans">Qwen3.5-4B</text>
+<path d="M1078,1088 H1295.111111111111 A4,4 0 0 1 1299.111111111111,1092 V1106 A4,4 0 0 1 1295.111111111111,1110 H1078 Z" fill="#B9C8DD"/>
+<text x="1309.111111111111" y="1105" font-size="19" fill="#231F20" font-weight="400" text-anchor="start" class="sans">61.4%</text>
+<text x="1064" y="1143" font-size="20" fill="#231F20" font-weight="400" text-anchor="end" class="sans">Qwen3.5-0.8B</text>
+<path d="M1078,1126 H1237.3333333333333 A4,4 0 0 1 1241.3333333333333,1130 V1144 A4,4 0 0 1 1237.3333333333333,1148 H1078 Z" fill="#B9C8DD"/>
+<text x="1251.3333333333333" y="1143" font-size="19" fill="#231F20" font-weight="400" text-anchor="start" class="sans">45.4%</text>
+<text x="1064" y="1181" font-size="20" fill="#231F20" font-weight="400" text-anchor="end" class="sans">Gemma 3 270M IT</text>
+<path d="M1078,1164 H1177.3333333333333 A4,4 0 0 1 1181.3333333333333,1168 V1182 A4,4 0 0 1 1177.3333333333333,1186 H1078 Z" fill="#B9C8DD"/>
+<text x="1191.3333333333333" y="1181" font-size="19" fill="#231F20" font-weight="400" text-anchor="start" class="sans">28.7%</text>
+<rect x="850" y="1236" width="40" height="4" rx="2" fill="#F44029"/>
+<text x="850" y="1288" text-anchor="start" class="sans"><tspan font-size="40" fill="#231F20" font-weight="700">+24</tspan><tspan font-size="21" fill="#231F20" font-weight="600"> points</tspan></text>
+<text x="850" y="1318" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">over its base model,</text>
+<text x="850" y="1344" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">Qwen3.5-9B</text>
+<rect x="1079" y="1236" width="40" height="4" rx="2" fill="#F44029"/>
+<text x="1079" y="1288" text-anchor="start" class="sans"><tspan font-size="40" fill="#231F20" font-weight="700">+5</tspan><tspan font-size="21" fill="#231F20" font-weight="600"> points</tspan></text>
+<text x="1079" y="1318" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">over Qwen3.8-27B,</text>
+<text x="1079" y="1344" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">a model 3× larger</text>
+<rect x="1308" y="1236" width="40" height="4" rx="2" fill="#F44029"/>
+<text x="1308" y="1288" text-anchor="start" class="sans"><tspan font-size="40" fill="#231F20" font-weight="700">3</tspan><tspan font-size="21" fill="#231F20" font-weight="600"> points</tspan></text>
+<text x="1308" y="1318" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">behind Jev 1.13.0</text>
+<text x="1308" y="1344" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">from TypeSafe</text>
+<text x="48" y="1420" font-size="19" fill="#5E5A57" font-weight="400" text-anchor="start" class="sans">huggingface.co/bespokelabs/Bespoke-Nimble-9B  ·  github.com/bespokelabsai/nimble</text>
+</svg>
