@@ -1,0 +1,5 @@
+[root@f3f099aa0058 skill_selection_20]# python3 run_benchmark.py run
+[1/20] fc176569-bb3d-4df2-a647-db3247c9879c: TypeSafeInternalServerError
+[2/20] c56c46f1-9075-4f03-8601-f0530e66a890: TypeSafeInternalServerError
+[3/20] 692c26e0-a144-48f1-a859-e27a2301b290: TypeSafeInternalServerError
+[4/20] e74d1c60-3981-402d-bf27-5ee9f7883002: TypeSafeInternalServerError
