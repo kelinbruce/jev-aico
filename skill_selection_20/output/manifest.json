@@ -1,0 +1,5 @@
+{
+  "dataset_sha256": "75f994fe66d0657e5dec25b6403dbea3f23bea6ea9dd2064585798cba357963b",
+  "model_override": "kev-latest",
+  "api_url": "http://71.77.153.223:55332"
+}
