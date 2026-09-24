@@ -2,6 +2,7 @@
 """Run decision-v7 through the TypeSafe SDK (Python 3.10+)."""
 import argparse
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 from datetime import datetime
 import hashlib
 import json
@@ -72,19 +73,89 @@ def summarize(results):
                            "p95": elapsed[math.ceil(len(elapsed) * .95) - 1]}}
 
 
+def evaluate_record(item, args):
+    from typesafe_sdk import TypeSafeClient, RetryPolicy
+    index, row, questions = item
+    start = time.perf_counter()
+    response, error, raw = None, None, None
+    try:
+        with TypeSafeClient(base_url=args.base_url, model=args.model,
+                            api_key=os.environ.get("LOCAL_MODEL_API_KEY", "local"),
+                            retry=RetryPolicy(max_retries=0, timeout=300.0)) as client:
+            response = client.system_one(state=row["state"], questions=questions)
+            raw = response.model_dump(mode="json")
+    except Exception as exc:
+        error = type(exc).__name__
+    latency = (time.perf_counter() - start) * 1000
+    answers = []
+    for qid, q in row["questions"].items():
+        prediction, qerror, score_error = None, error, None
+        if qerror is None:
+            try:
+                prediction = predict(response, qid, q)
+                if q["type"] == "score":
+                    probs = response.scores[qid].probabilities
+                    total = sum(probs.values())
+                    expected = sum(int(k) * v for k, v in probs.items()) / total
+                    score_error = abs(expected - q["label"])
+            except Exception as exc:
+                qerror = type(exc).__name__
+        answers.append({"id": qid, "type": q["type"], "source": q.get("src", "unknown"),
+                        "family": row.get("_meta", {}).get("family", q.get("src", "unknown")),
+                        "variant": row.get("_meta", {}).get("variant", "clean"),
+                        "score_absolute_error": score_error,
+                        "gold": q["label"], "prediction": prediction,
+                        "correct": qerror is None and prediction == q["label"], "error": qerror})
+    result = {"index": index, "id": row.get("_meta", {}).get("id", str(index)),
+              "latency_ms": latency, "questions": answers, "response": raw}
+    result["request_error"] = error
+    return result
+
+
+def run_records(items, execute, workers):
+    """Probe once, then keep at most workers requests submitted at a time."""
+    items = iter(items)
+    first = execute(next(items))
+    yield first
+    if first["request_error"]:
+        print(f"First request failed ({first['request_error']}); stopping. Check server URL and authentication.")
+        return
+    pool = ThreadPoolExecutor(max_workers=workers)
+    pending = set()
+    try:
+        for _ in range(workers):
+            item = next(items, None)
+            if item is not None:
+                pending.add(pool.submit(execute, item))
+        while pending:
+            done, pending = wait(pending, return_when=FIRST_COMPLETED)
+            for future in done:
+                yield future.result()
+            for _ in done:
+                item = next(items, None)
+                if item is not None:
+                    pending.add(pool.submit(execute, item))
+    finally:
+        for future in pending:
+            future.cancel()
+        # Running HTTP requests finish or hit their timeout; queued work is cancelled.
+        pool.shutdown(wait=True, cancel_futures=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-url", default=BASE_URL)
     parser.add_argument("--model", default="kev-latest")
     parser.add_argument("--data", type=Path, default=ROOT / "development.jsonl")
     parser.add_argument("--out", type=Path)
+    parser.add_argument("--workers", type=int, default=1, help="Maximum concurrent record requests (default: 1)")
     parser.add_argument("--limit", type=int, help="Run only the first N records")
     parser.add_argument("--dry-run", action="store_true", help="Validate requests without calling the server")
     args = parser.parse_args()
     if args.limit is not None and args.limit < 1:
         parser.error("--limit must be positive")
-    from typesafe_sdk import TypeSafeClient
-    from typesafe_sdk import RetryPolicy
+    if args.workers < 1:
+        parser.error("--workers must be positive")
 
     data = args.data.read_bytes()
     rows = [json.loads(line) for line in data.split(b"\n") if line.strip()]
@@ -103,56 +174,28 @@ def main():
     out = args.out or ROOT / "output" / datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     out.mkdir(parents=True, exist_ok=False)
     config = {"base_url": args.base_url, "model": args.model, "dataset_sha256": hashlib.sha256(data).hexdigest(),
-              "records": len(rows), "timeout": 300.0, "max_retries": 0}
+              "records": len(rows), "timeout": 300.0, "max_retries": 0, "workers": args.workers}
     (out / "run.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
     results = []
     interrupted = False
+    items = [(i, row, questions) for i, (row, questions) in enumerate(zip(rows, requests), 1)]
+    stream = run_records(items, lambda item: evaluate_record(item, args), args.workers)
     try:
-        with TypeSafeClient(base_url=args.base_url, model=args.model,
-                            api_key=os.environ.get("LOCAL_MODEL_API_KEY", "local"),
-                            retry=RetryPolicy(max_retries=0, timeout=300.0)) as client, \
-                (out / "results.jsonl").open("w", encoding="utf-8") as f:
-            for index, (row, questions) in enumerate(zip(rows, requests), 1):
-                start = time.perf_counter()
-                response, error, raw = None, None, None
-                try:
-                    response = client.system_one(state=row["state"], questions=questions)
-                    raw = response.model_dump(mode="json")
-                except Exception as exc:
-                    error = type(exc).__name__
-                latency = (time.perf_counter() - start) * 1000
-                answers = []
-                for qid, q in row["questions"].items():
-                    prediction, qerror, score_error = None, error, None
-                    if qerror is None:
-                        try:
-                            prediction = predict(response, qid, q)
-                            if q["type"] == "score":
-                                probs = response.scores[qid].probabilities
-                                total = sum(probs.values())
-                                expected = sum(int(k) * v for k, v in probs.items()) / total
-                                score_error = abs(expected - q["label"])
-                        except Exception as exc:
-                            qerror = type(exc).__name__
-                    answers.append({"id": qid, "type": q["type"], "source": q.get("src", "unknown"),
-                                    "family": row.get("_meta", {}).get("family", q.get("src", "unknown")),
-                                    "variant": row.get("_meta", {}).get("variant", "clean"),
-                                    "score_absolute_error": score_error,
-                                    "gold": q["label"], "prediction": prediction,
-                                    "correct": qerror is None and prediction == q["label"], "error": qerror})
-                result = {"index": index, "id": row.get("_meta", {}).get("id", str(index)),
-                          "latency_ms": latency, "questions": answers, "response": raw}
+        with (out / "results.jsonl").open("w", encoding="utf-8") as f:
+            for result in stream:
                 results.append(result)
                 f.write(json.dumps(result, ensure_ascii=False) + "\n")
                 f.flush()
-                print(f"[{index}/{len(rows)}] correct={sum(q['correct'] for q in answers)}/{len(answers)} "
-                      f"errors={sum(q['error'] is not None for q in answers)} latency={latency:.0f}ms", flush=True)
-                if index == 1 and error:
-                    print(f"First request failed ({error}); stopping. Check server URL and authentication.")
-                    break
+                answers = result["questions"]
+                print(f"[{len(results)}/{len(rows)}] record={result['index']} "
+                      f"correct={sum(q['correct'] for q in answers)}/{len(answers)} "
+                      f"errors={sum(q['error'] is not None for q in answers)} "
+                      f"latency={result['latency_ms']:.0f}ms", flush=True)
     except KeyboardInterrupt:
         interrupted = True
         print("Interrupted; saving completed results.")
+    finally:
+        stream.close()
     if results:
         summary = {**summarize(results), "requested_records": len(rows),
                    "complete": len(results) == len(rows) and not interrupted}

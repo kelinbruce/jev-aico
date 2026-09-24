@@ -53,7 +53,7 @@ python3 external-benchmarks/run_benchmarks.py --base-url http://127.0.0.1:8009 -
 python3 external-benchmarks/run_benchmarks.py --dry-run
 ```
 
-默认地址 `http://127.0.0.1:55733`，模型 `kev-latest`，API key 为 `local`；认证通过环境变量 `LOCAL_MODEL_API_KEY` 设置。每次请求超时 300 秒，重试 0 次，默认串行。SDK 会调用 `/v1/systemone`，base URL 不要重复带上这个路径。SemIf 等没有此 API 的原生实现需要额外的接口适配，不能只改模型名。
+默认地址 `http://127.0.0.1:55733`，模型 `kev-latest`，API key 为 `local`；认证通过环境变量 `LOCAL_MODEL_API_KEY` 设置。每次请求超时 300 秒，重试 0 次，默认 1 并发，可通过 `--workers` 调整。SDK 会调用 `/v1/systemone`，base URL 不要重复带上这个路径。SemIf 等没有此 API 的原生实现需要额外的接口适配，不能只改模型名。
 
 入口复用 `decision-v7/run_test.py`，请保留这两个目录。结果按时间新建目录，不覆盖旧结果；发生请求错误会保留已完成输出，并停止后续集合。
 
@@ -99,3 +99,14 @@ python3 external-benchmarks/prepare_public.py --raw external-benchmarks/raw
 ```
 
 生成器按原始 ID 选取，比较完整转换前子集的 SHA-256；如果上游内容或转换模块变化导致不一致会失败，不能悄悄换成另一批题。下载来源和 Parquet 校验值记录在各集合 manifest 内。大体积上游原始数据不入库。
+
+## 控制并发
+
+```bash
+python3 external-benchmarks/run_benchmarks.py --workers 4
+
+```
+
+`--workers` 为正整数，默认 1。先串行发送首条记录检查服务，成功后最多同时发送指定数量的记录请求；每条记录内部的多题结构保持不变。外部测试集按顺序执行，不会把并发数乘以测试集数量。
+
+结果按完成顺序写入，`index` 和 `id` 保留原始对应关系，准确率仍在每个集合内按问题统计。`run.json` 记录 workers。每次请求使用独立客户端，耗时包含客户端创建、连接及响应时间。Ctrl+C 停止调度新请求，等待已发送请求完成或超时，保留此前已写入的结果；中断运行不作全量外部对比。

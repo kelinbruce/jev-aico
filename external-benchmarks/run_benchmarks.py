@@ -26,7 +26,10 @@ def main():
     ap.add_argument('--base-url', default='http://127.0.0.1:55733')
     ap.add_argument('--model', default='kev-latest')
     ap.add_argument('--out', type=Path)
+    ap.add_argument('--workers', type=int, default=1, help='Maximum concurrent requests per suite (default: 1)')
     args = ap.parse_args()
+    if args.workers < 1:
+        ap.error('--workers must be positive')
     if args.limit is not None and args.limit < 1:
         ap.error('--limit must be positive')
     if args.list:
@@ -50,7 +53,7 @@ def main():
     failed = False
     for name in suites:
         command = [sys.executable, str(RUNNER), '--data', str(ROOT / 'datasets' / name / 'data.jsonl'),
-                   '--base-url', args.base_url, '--model', args.model]
+                   '--base-url', args.base_url, '--model', args.model, '--workers', str(args.workers)]
         if args.dry_run: command.append('--dry-run')
         else: command += ['--out', str(out / name)]
         if args.limit is not None: command += ['--limit', str(args.limit)]

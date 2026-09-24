@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import threading
+import time
 import unittest
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typesafe_sdk._core.response_types import SystemOneResponse
@@ -55,11 +56,34 @@ class Scoring(unittest.TestCase):
                 n+=1
         self.assertEqual(n,2308)
 
+    def test_first_error_stops_before_concurrent_batch(self):
+        called=[]
+        def execute(item):
+            called.append(item)
+            return {"request_error":"ConnectionError"}
+        self.assertEqual(len(list(runner.run_records(range(10),execute,4))),1)
+        self.assertEqual(called,[0])
+
+    def test_invalid_workers(self):
+        for script in (ROOT/'run_benchmarks.py', ROOT.parent/'decision-v7/run_test.py'):
+            for workers in ('0','-2'):
+                p=subprocess.run([sys.executable,str(script),'--workers',workers,'--dry-run'],capture_output=True,text=True)
+                self.assertEqual(p.returncode,2)
+                self.assertIn('--workers must be positive',p.stderr)
+
     def test_mock_http_all_suites(self):
         captured=[]
+        lock=threading.Lock()
+        active=0
+        peak=0
         class Handler(BaseHTTPRequestHandler):
             def log_message(self,*args): pass
             def do_POST(self):
+                nonlocal active, peak
+                with lock:
+                    active += 1
+                    peak = max(peak, active)
+                time.sleep(.05)
                 payload=json.loads(self.rfile.read(int(self.headers['Content-Length'])))
                 captured.append((self.path,payload))
                 answers={}
@@ -77,22 +101,38 @@ class Scoring(unittest.TestCase):
                 data=json.dumps({'model':'mock','usage':{'input_tokens':1,'output_tokens':1},'answers':answers}).encode()
                 self.send_response(200); self.send_header('Content-Type','application/json')
                 self.send_header('Content-Length',str(len(data))); self.end_headers(); self.wfile.write(data)
+                with lock: active -= 1
         server=ThreadingHTTPServer(('127.0.0.1',0),Handler)
         thread=threading.Thread(target=server.serve_forever,daemon=True); thread.start()
         try:
-            with tempfile.TemporaryDirectory() as tmp:
-                out=Path(tmp)/'run'
-                p=subprocess.run([sys.executable,str(ROOT/'run_benchmarks.py'),'--limit','1',
-                    '--base-url',f'http://127.0.0.1:{server.server_port}','--model','mock','--out',str(out)],capture_output=True,text=True)
-                self.assertEqual(p.returncode,0,p.stdout+p.stderr)
-                comparison=json.loads((out/'comparison.json').read_text())
-                self.assertEqual(len(comparison),10)
-                for row in comparison.values():
-                    self.assertFalse(row['full_run_comparable'])
-                    self.assertEqual(row['summary']['errors'],0)
-                    for b in row['published_baselines']:self.assertIsNone(b['difference'])
-                self.assertTrue((out/'REPORT.md').exists())
-            self.assertEqual(len(captured),10)
+            summaries=[]
+            for workers in (1,4):
+                with lock: peak=0
+                with tempfile.TemporaryDirectory() as tmp:
+                    out=Path(tmp)/'run'
+                    p=subprocess.run([sys.executable,str(ROOT/'run_benchmarks.py'),'--limit','8',
+                        '--workers',str(workers),
+                        '--base-url',f'http://127.0.0.1:{server.server_port}','--model','mock','--out',str(out)],capture_output=True,text=True)
+                    self.assertEqual(p.returncode,0,p.stdout+p.stderr)
+                    comparison=json.loads((out/'comparison.json').read_text())
+                    self.assertEqual(len(comparison),10)
+                    summaries.append({})
+                    for name,row in comparison.items():
+                        self.assertFalse(row['full_run_comparable'])
+                        self.assertEqual(row['summary']['errors'],0)
+                        self.assertEqual(row['summary']['records'],8)
+                        summaries[-1][name]=row['summary']['accuracy']
+                        saved=[json.loads(l) for l in (out/name/'results.jsonl').read_text().splitlines()]
+                        self.assertEqual(sorted(r['index'] for r in saved),list(range(1,9)))
+                        self.assertEqual(len({r['id'] for r in saved}),8)
+                        self.assertEqual(json.loads((out/name/'run.json').read_text())['workers'],workers)
+                        for baseline in row['published_baselines']:self.assertIsNone(baseline['difference'])
+                    self.assertTrue((out/'REPORT.md').exists())
+                self.assertLessEqual(peak,workers)
+                if workers==1:self.assertEqual(peak,1)
+                else:self.assertGreater(peak,1)
+            self.assertEqual(summaries[0],summaries[1])
+            self.assertEqual(len(captured),160)
             for path,request in captured:
                 self.assertEqual(path,'/v1/systemone')
                 self.assertEqual(set(request),{'model','state','questions'})
