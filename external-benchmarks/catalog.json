@@ -1,0 +1,236 @@
+{
+  "boolq": {
+    "records": 300,
+    "description": "阅读理解 / 是非判断",
+    "baselines": [
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.86,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.897,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "paws": {
+    "records": 250,
+    "description": "高词汇重叠的语义等价判断",
+    "baselines": [
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.828,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.892,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "squad2": {
+    "records": 299,
+    "description": "RAG 证据是否足以回答问题",
+    "baselines": [
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.806,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.829,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "pubmedqa": {
+    "records": 250,
+    "description": "医学摘要 yes/no/maybe 判断",
+    "baselines": [
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.756,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.772,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "helpsteer2": {
+    "records": 249,
+    "description": "回答帮助程度 0–4 评分",
+    "baselines": [
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.39,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.341,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.962,
+        "metric": "score_mae",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.967,
+        "metric": "score_mae",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "summeval-relevance": {
+    "records": 240,
+    "description": "摘要相关性 0–4 评分",
+    "baselines": [
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.492,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.35,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.698,
+        "metric": "score_mae",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.77,
+        "metric": "score_mae",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "summeval-consistency": {
+    "records": 144,
+    "description": "摘要事实一致性 0–4 评分",
+    "baselines": [
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.757,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.812,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.569,
+        "metric": "score_mae",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.468,
+        "metric": "score_mae",
+        "source_url": "https://github.com/bespokelabsai/nimble/blob/main/docs/PUBLIC_BENCHMARKS.md#accuracy",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "nimble-synthetic-324": {
+    "records": 324,
+    "description": "Nimble 合成对比决策留出集",
+    "baselines": [
+      {
+        "model": "Bespoke-Nimble-9B",
+        "value": 0.9012345679012346,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble#evaluation-on-324-held-out-examples",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev 1.13.0",
+        "value": 0.9320987654320988,
+        "metric": "accuracy",
+        "source_url": "https://github.com/bespokelabsai/nimble#evaluation-on-324-held-out-examples",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "semif-authored-144": {
+    "records": 144,
+    "description": "SemIf 人工构造的语义决策；按 family 平衡准确率对照",
+    "baselines": [
+      {
+        "model": "SemIf Qwen3.5-4B direct BF16",
+        "value": 0.813,
+        "metric": "family_balanced_accuracy",
+        "source_url": "https://github.com/TheoLeeCJ/SemIf/blob/master/docs/RESULTS.md",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "SemIf Qwen3-Reranker-4B",
+        "value": 0.625,
+        "metric": "family_balanced_accuracy",
+        "source_url": "https://github.com/TheoLeeCJ/SemIf/blob/master/docs/RESULTS.md",
+        "reported_not_locally_measured": true
+      },
+      {
+        "model": "Jev (Kev external run)",
+        "value": 0.9652777777777778,
+        "metric": "accuracy",
+        "source_url": "https://github.com/jaredpalmer/kev/blob/main/runs/jev-semif-v1/report.json",
+        "reported_not_locally_measured": true
+      }
+    ]
+  },
+  "semif-perturbations-108": {
+    "records": 108,
+    "description": "选项重排、指令包裹、无关上下文干扰；补充稳健性测试",
+    "baselines": []
+  }
+}

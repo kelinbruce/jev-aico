@@ -1,0 +1,10 @@
+{
+  "pipeline_version": "evidence-curation-v3",
+  "source": "/Users/mahesh/Documents/Work/openjevons/data/typesafe_diverse_300_gpt56/all.jsonl",
+  "source_sha256": "9d101fc0d602da6d245e5881f302327127ebd7c5a849c443199eb996b3a0a41b",
+  "reference_human_reviewed": false,
+  "eval_rows": 324,
+  "eval_sha256": "8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896",
+  "note": "Evaluation-only excerpt; training lineage omitted. Original manifest SHA-256 below.",
+  "original_manifest_sha256": "d945ebfbe535ce066db5b1f342b54b168ee1ba90d822a18c2822d3cffc4629cf"
+}

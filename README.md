@@ -15,6 +15,8 @@ python3 run_benchmark.py run
 
 ## 目录
 
+- `external-benchmarks/`：10 个外部对照测试集（2,308 条），含 Nimble/Jev/SemIf 已发表基线及一键运行脚本。
+
 - `skill_selection_20/`：可独立运行的 20 题本地 SDK 测试包。
 - `benchmark/`：原始日志转换、官方 JEV benchmark 与实测结果。
 - `data/`：原始调用日志、分析脚本与报表。

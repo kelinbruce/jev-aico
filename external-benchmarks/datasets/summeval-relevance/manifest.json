@@ -1,0 +1,23 @@
+{
+  "name": "summeval-relevance",
+  "records": 240,
+  "questions": 240,
+  "sha256": "cb8357cac758b9334241205eb3fa14268ba40b836e6e5c39a65a3bbcda006b49",
+  "license": "MIT",
+  "source_url": "https://huggingface.co/datasets/mteb/summeval",
+  "upstream_subset_sha256": "e10be11770eeaf34b6b39e529796de89d2a2341e05805071c47e716bc90f2255",
+  "upstream_subset_verified": true,
+  "conversion": "Keep state/instructions/criteria/order and labels; remove non-input annotations from request.",
+  "converter_sha256": "66e76ab776f1483065055494d90c70ae305d367a8d690c59d171f810af7df3e2",
+  "download": {
+    "dataset": "mteb/summeval",
+    "config": "default",
+    "split": "test",
+    "files": [
+      {
+        "url": "https://huggingface.co/datasets/mteb/summeval/resolve/refs%2Fconvert%2Fparquet/default/test/0000.parquet",
+        "sha256": "7ff6f3f4d044223bd6922c5434d27bf28473950346fcfc2a3b7352c19163690e"
+      }
+    ]
+  }
+}

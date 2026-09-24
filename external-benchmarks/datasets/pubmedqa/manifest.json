@@ -1,0 +1,23 @@
+{
+  "name": "pubmedqa",
+  "records": 250,
+  "questions": 250,
+  "sha256": "68cbab40fbdeb29f4367f77384443d7d8b6c25a0f945c093672f5210780d7a6b",
+  "license": "MIT",
+  "source_url": "https://huggingface.co/datasets/qiaojin/PubMedQA",
+  "upstream_subset_sha256": "8ee766a759a60280373f45a19a62c9e36462b1176508f193621095e102403a40",
+  "upstream_subset_verified": true,
+  "conversion": "Keep state/instructions/criteria/order and labels; remove non-input annotations from request.",
+  "converter_sha256": "86dc747470697bbe0460a76197ddceeec81d641d8900a1730555b8c5d5767c23",
+  "download": {
+    "dataset": "qiaojin/PubMedQA",
+    "config": "pqa_labeled",
+    "split": "train",
+    "files": [
+      {
+        "url": "https://huggingface.co/datasets/qiaojin/PubMedQA/resolve/refs%2Fconvert%2Fparquet/pqa_labeled/train/0000.parquet",
+        "sha256": "3d56bd1abc11884579ecc3aab9dd3cdfce8b7cf54715daeca93b8022b7be231c"
+      }
+    ]
+  }
+}

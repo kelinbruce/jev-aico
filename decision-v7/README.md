@@ -48,3 +48,5 @@ python3 decision-v7/run_test.py --base-url http://127.0.0.1:55733 --model kev-la
 结果保存在 `decision-v7/output/<时间戳>/`：`run.json` 记录运行配置，`results.jsonl` 逐条保存预测、标准答案、错误、原始响应及请求耗时，`summary.json` 汇总总准确率、按来源/题型准确率和延迟。可使用 `--out 新目录` 指定输出位置，已有目录不会被覆盖。Ctrl+C 会保存已完成记录的汇总。
 
 准确率按问题计算：Choice 比较选择标签；Noul 概率大于 0.5 为真（等于 0.5 时按 false）；Score 取概率最高的等级（并列取较低等级），不对期望分数四舍五入。服务返回的概率可能经过取整，临界并列时可能与模型内部完整精度评分不同。失败题在总准确率中按错误计，另列成功题准确率。首个请求失败时提前结束，避免服务不可用时继续等待整批测试。
+
+`summary.json` 现额外提供 `clean.accuracy`（1,264 个 clean 问题），用于对照 Kev 官方表格；顶层 `accuracy` 仍覆盖全部 1,468 个问题。Score 另提供概率加权等级的 `score_mae`。

@@ -44,9 +44,12 @@ def summarize(results):
     def metrics(items):
         correct = sum(x["correct"] for x in items)
         successful = sum(x["error"] is None for x in items)
+        errors = [x["score_absolute_error"] for x in items if x.get("score_absolute_error") is not None]
         return {"questions": len(items), "correct": correct, "errors": len(items) - successful,
                 "accuracy": correct / len(items) if items else None,
-                "accuracy_success_only": correct / successful if successful else None}
+                "accuracy_success_only": correct / successful if successful else None,
+                "score_mae": sum(errors) / len(errors) if errors else None,
+                "score_mae_n": len(errors)}
     questions = [q for r in results for q in r["questions"]]
     groups = {}
     for key in ("source", "type"):
@@ -55,7 +58,15 @@ def summarize(results):
             buckets[q[key]].append(q)
         groups["by_" + key] = {k: metrics(v) for k, v in sorted(buckets.items())}
     elapsed = sorted(r["latency_ms"] for r in results)
+    clean = [q for q in questions if q.get("variant", "clean") == "clean"]
+    families = defaultdict(lambda: defaultdict(list))
+    for q in questions:
+        families[q.get("family", q["source"])][str(q["gold"])].append(q["correct"])
+    balanced = [sum(sum(v) / len(v) for v in labels.values()) / len(labels)
+                for labels in families.values()]
     return {"records": len(results), **metrics(questions), **groups,
+            "clean": metrics(clean),
+            "family_balanced_accuracy": sum(balanced) / len(balanced),
             "latency_ms": {"mean": sum(elapsed) / len(elapsed),
                            "p50": elapsed[math.ceil(len(elapsed) * .5) - 1],
                            "p95": elapsed[math.ceil(len(elapsed) * .95) - 1]}}
@@ -76,7 +87,7 @@ def main():
     from typesafe_sdk import RetryPolicy
 
     data = args.data.read_bytes()
-    rows = [json.loads(line) for line in data.splitlines() if line.strip()]
+    rows = [json.loads(line) for line in data.split(b"\n") if line.strip()]
     if args.data.resolve() == (ROOT / "development.jsonl").resolve():
         manifest = json.loads((ROOT / "manifest.json").read_text())
         if hashlib.sha256(data).hexdigest() != manifest["files"]["development.jsonl"]["sha256"]:
@@ -112,13 +123,21 @@ def main():
                 latency = (time.perf_counter() - start) * 1000
                 answers = []
                 for qid, q in row["questions"].items():
-                    prediction, qerror = None, error
+                    prediction, qerror, score_error = None, error, None
                     if qerror is None:
                         try:
                             prediction = predict(response, qid, q)
+                            if q["type"] == "score":
+                                probs = response.scores[qid].probabilities
+                                total = sum(probs.values())
+                                expected = sum(int(k) * v for k, v in probs.items()) / total
+                                score_error = abs(expected - q["label"])
                         except Exception as exc:
                             qerror = type(exc).__name__
                     answers.append({"id": qid, "type": q["type"], "source": q.get("src", "unknown"),
+                                    "family": row.get("_meta", {}).get("family", q.get("src", "unknown")),
+                                    "variant": row.get("_meta", {}).get("variant", "clean"),
+                                    "score_absolute_error": score_error,
                                     "gold": q["label"], "prediction": prediction,
                                     "correct": qerror is None and prediction == q["label"], "error": qerror})
                 result = {"index": index, "id": row.get("_meta", {}).get("id", str(index)),

@@ -1,0 +1,11 @@
+{
+  "name": "nimble-synthetic-324",
+  "records": 324,
+  "questions": 324,
+  "sha256": "33657f8d8433de8fe135e2e1f7b1fe31073484a60cd08cfb0243bcd471a31cfa",
+  "source_url": "https://github.com/bespokelabsai/nimble",
+  "upstream_sha256": "8e9e48b8de5206593912ae01ddc95bd77e40ad2ecf4c9292c1711290eca0d896",
+  "license": "No standalone data license found in the local snapshot; retain upstream attribution and check upstream terms before redistribution.",
+  "human_reviewed": false,
+  "note": "Synthetic held-out set. Only input and reference.target retained; no teacher output or evidence certificates sent."
+}

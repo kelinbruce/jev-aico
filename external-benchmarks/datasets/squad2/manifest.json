@@ -1,0 +1,23 @@
+{
+  "name": "squad2",
+  "records": 299,
+  "questions": 299,
+  "sha256": "a69a516559f19e7e29bb0fa73cac1480bf67777d9e7908ef82ce0d5e23505f9c",
+  "license": "CC BY-SA 4.0",
+  "source_url": "https://huggingface.co/datasets/rajpurkar/squad_v2",
+  "upstream_subset_sha256": "95316d9d810d4827d86053e9199e15e865bad3fa4b65cbcb742a54433fcdfdd7",
+  "upstream_subset_verified": true,
+  "conversion": "Keep state/instructions/criteria/order and labels; remove non-input annotations from request.",
+  "converter_sha256": "cd4ec9707c6e204dffd432e0d90f1bdab368395da3d3f1f9d84854190fcc615a",
+  "download": {
+    "dataset": "rajpurkar/squad_v2",
+    "config": "squad_v2",
+    "split": "validation",
+    "files": [
+      {
+        "url": "https://huggingface.co/datasets/rajpurkar/squad_v2/resolve/refs%2Fconvert%2Fparquet/squad_v2/validation/0000.parquet",
+        "sha256": "0560174ab095c5ac0a8c8dc8da05f1625453c45a77e4ce9cabc6947ddfdd24cb"
+      }
+    ]
+  }
+}

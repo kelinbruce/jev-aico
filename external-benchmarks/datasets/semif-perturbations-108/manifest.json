@@ -1,0 +1,11 @@
+{
+  "name": "semif-perturbations-108",
+  "records": 108,
+  "questions": 108,
+  "sha256": "d48d4c46344de929c951a79c96506fbc81184ffe39240a3102045f13429d08c2",
+  "source_url": "https://github.com/TheoLeeCJ/SemIf",
+  "upstream_commit": "ca3ba65f142967030ecb453346e94d6f476a69df",
+  "license": "MIT (SemIf); Apache-2.0 (Kev conversion)",
+  "upstream_converted_sha256": "b9e0c7939a25a04a7ef7bc12334b5fa45b2027d04904d32021295b5539a97303",
+  "note": "Authored subset uses mean family balanced accuracy for SemIf comparisons; perturbations are supplementary robustness probes."
+}

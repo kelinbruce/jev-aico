@@ -1,0 +1,23 @@
+{
+  "name": "helpsteer2",
+  "records": 249,
+  "questions": 249,
+  "sha256": "73d8fb3884863547ad300d29f703ea653e4b9ae39d84512a4470de092ff44143",
+  "license": "CC BY-4.0",
+  "source_url": "https://huggingface.co/datasets/nvidia/HelpSteer2",
+  "upstream_subset_sha256": "c2395b2f794217ee080ec3ef89fbd6d67fd8c8c6f9f1c8d47d127301929a2ca3",
+  "upstream_subset_verified": true,
+  "conversion": "Keep state/instructions/criteria/order and labels; remove non-input annotations from request.",
+  "converter_sha256": "2452eec2888241b33f194d62bc385510d8ab61bf41c1b2866983abc84321bc91",
+  "download": {
+    "dataset": "nvidia/HelpSteer2",
+    "config": "default",
+    "split": "validation",
+    "files": [
+      {
+        "url": "https://huggingface.co/datasets/nvidia/HelpSteer2/resolve/refs%2Fconvert%2Fparquet/default/validation/0000.parquet",
+        "sha256": "0add582523f049c233d4716d57a578b6a7b4ddee51bc8060e1598d9f26832c70"
+      }
+    ]
+  }
+}

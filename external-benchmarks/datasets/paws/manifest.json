@@ -1,0 +1,23 @@
+{
+  "name": "paws",
+  "records": 250,
+  "questions": 250,
+  "sha256": "79c42236e05342031dd455d6221df58f24d988d05a5845d0c1550af665723443",
+  "license": "Google PAWS license: may be freely used for any purpose",
+  "source_url": "https://huggingface.co/datasets/google-research-datasets/paws",
+  "upstream_subset_sha256": "ffc7388bbf027272b1c2175cd8d4d3591b63006696b2f9889bf70fccd457d167",
+  "upstream_subset_verified": true,
+  "conversion": "Keep state/instructions/criteria/order and labels; remove non-input annotations from request.",
+  "converter_sha256": "41df1de14302239400685a38866c10fff6b08c8256f1bea62f5bea3b3691b543",
+  "download": {
+    "dataset": "google-research-datasets/paws",
+    "config": "labeled_final",
+    "split": "test",
+    "files": [
+      {
+        "url": "https://huggingface.co/datasets/google-research-datasets/paws/resolve/refs%2Fconvert%2Fparquet/labeled_final/test/0000.parquet",
+        "sha256": "ae342ff12bb84b84b95f468abf5db6cb7c7bd578271299fe9c99be75b8132f4d"
+      }
+    ]
+  }
+}
