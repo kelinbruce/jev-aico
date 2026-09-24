@@ -22,3 +22,29 @@
 ```
 
 本目录仅复制原始数据，未改写问题、标签或元数据。
+
+## 启动本地测试
+
+需要 Python 3.10+，先启动本地 Kev 服务，然后在仓库根目录执行：
+
+```bash
+python3 -m pip install -r decision-v7/requirements.txt
+python3 decision-v7/run_test.py
+```
+
+默认连接 `http://127.0.0.1:55733`，模型为 `kev-latest`，API key 为 `local`，超时 300 秒，不重试。若启用认证，用环境变量 `LOCAL_MODEL_API_KEY` 提供 key。
+
+```bash
+# 先测试前 5 条
+python3 decision-v7/run_test.py --limit 5
+# 仅校验数据与 SDK 请求格式，不发送请求
+python3 decision-v7/run_test.py --dry-run
+# 覆盖服务地址
+python3 decision-v7/run_test.py --base-url http://127.0.0.1:55733 --model kev-latest
+```
+
+每条记录发送一次请求，保留同一记录内的多题结构；`label`、`src` 和 `_meta` 不发送给模型。默认串行执行。
+
+结果保存在 `decision-v7/output/<时间戳>/`：`run.json` 记录运行配置，`results.jsonl` 逐条保存预测、标准答案、错误、原始响应及请求耗时，`summary.json` 汇总总准确率、按来源/题型准确率和延迟。可使用 `--out 新目录` 指定输出位置，已有目录不会被覆盖。Ctrl+C 会保存已完成记录的汇总。
+
+准确率按问题计算：Choice 比较选择标签；Noul 概率大于 0.5 为真（等于 0.5 时按 false）；Score 取概率最高的等级（并列取较低等级），不对期望分数四舍五入。服务返回的概率可能经过取整，临界并列时可能与模型内部完整精度评分不同。失败题在总准确率中按错误计，另列成功题准确率。首个请求失败时提前结束，避免服务不可用时继续等待整批测试。
